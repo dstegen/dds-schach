@@ -1,0 +1,22 @@
+{
+  "name": "dds-schach",
+  "version": "0.0.4",
+  "description": "basic online chess server",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "mimetype": "0.0.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chess"
+  ],
+  "author": "daniel stegen, david stegen, samuel stegen",
+  "license": "MIT"
+}
