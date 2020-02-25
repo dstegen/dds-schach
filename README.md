@@ -25,10 +25,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Authors:
-- https://en.wikipedia.org/wiki/User:Cburnett
-- https://en.wikipedia.org/wiki/User:Rfc1394
-
 @Author: Daniel Stegen, David Stegen, Samuel Stegen
 
 @Email: info@danielstegen.de
@@ -36,11 +32,12 @@ Authors:
 
 ## License Chess pieces graphics ##
 
-Chess pieces
-~~~~~~~~~~~~
-
 The chess pieces are copies from Wikimedia Commons
 https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces/Standard
 
 License: Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
 https://creativecommons.org/licenses/by-sa/3.0/
+
+Authors:
+- https://en.wikipedia.org/wiki/User:Cburnett
+- https://en.wikipedia.org/wiki/User:Rfc1394
