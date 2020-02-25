@@ -1,5 +1,6 @@
 # macOS files
 .DS_Store
+.eslintrc.json
 
 # archives
 *.zip
