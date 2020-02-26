@@ -11,7 +11,7 @@ const view = require('./lib/view');
 let obj = model.initModel();
 let port = 8080;
 let host = getIPs()['en0'];
-host= 'localhost';
+host= '172.30.80.28';
 
 http.createServer( function (request, response) {
 	let fields = {};
