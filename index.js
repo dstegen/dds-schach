@@ -9,8 +9,8 @@ const model = require('./lib/model');
 const view = require('./lib/view');
 
 let obj = model.initModel();
+let port = 8080;
 let host = getIPs()['en0'];
-
 host= 'localhost';
 
 http.createServer( function (request, response) {
@@ -42,4 +42,4 @@ http.createServer( function (request, response) {
 	      'content-type': 'text/html' });
 	  response.end(view(obj).data);
 	}
-}).listen(8080, host, () => console.log('online: http://'+host+':9090'));
+}).listen(port, host, () => console.log('online: http://'+host+':'+port));
