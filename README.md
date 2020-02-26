@@ -25,7 +25,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Authors: Daniel Stegen, David Stegen, Samuel Stegen
+Authors: Daniel Stegen, D. Stegen, S. Stegen
 
 Email: info@danielstegen.de
 

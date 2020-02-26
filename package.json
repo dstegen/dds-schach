@@ -1,6 +1,6 @@
 {
   "name": "dds-schach",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "basic online chess server",
   "main": "index.js",
   "directories": {
@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
+    "jquery-ui-dist": "^1.12.1",
     "mimetype": "0.0.8"
   },
   "devDependencies": {},
@@ -18,6 +19,6 @@
   "keywords": [
     "chess"
   ],
-  "author": "daniel stegen, david stegen, samuel stegen",
+  "author": "daniel stegen, d. stegen, s. stegen",
   "license": "MIT"
 }

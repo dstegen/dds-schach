@@ -10,9 +10,14 @@ const view = require('./lib/view');
 
 let obj = model.initModel();
 let port = 8080;
-let host = getIPs()['eth0'];
+let host = 'localhost';
+if (getIPs()['en0']) {
+	host = getIPs()['en0'];
+} else if (getIPs()['eth0']) {
+	host = getIPs()['eth0'];
+}
+console.log('Available network devices: ');
 console.log(getIPs());
-//host= 'localhost';
 
 http.createServer( function (request, response) {
 	let fields = {};
@@ -31,7 +36,7 @@ http.createServer( function (request, response) {
 		response.writeHead(302, {
 	      location: '/' });
 	  response.end('');
-	}	else if (request.url.includes('png') || request.url.includes('node_modules')) {
+	}	else if (request.url.includes('png') || request.url.includes('node_modules') || request.url.includes('public')) {
 		let sendObj = deliver(request);
 		response.writeHead(sendObj.statusCode, {
 	      location: '/',
@@ -43,4 +48,4 @@ http.createServer( function (request, response) {
 	      'content-type': 'text/html' });
 	  response.end(view(obj).data);
 	}
-}).listen(port, host, () => console.log('online: http://'+host+':'+port));
+}).listen(port, host, () => console.log('DDS-Schach is online: http://'+host+':'+port));
