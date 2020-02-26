@@ -11,6 +11,8 @@ const view = require('./lib/view');
 let obj = model.initModel();
 let host = getIPs()['en0'];
 
+host= 'localhost';
+
 http.createServer( function (request, response) {
 	let fields = {};
 	if (request.url.includes('action')) {
