@@ -10,9 +10,9 @@ const view = require('./lib/view');
 
 let obj = model.initModel();
 let port = 8080;
-let host = getIPs()['en0'];
+let host = getIPs()['eth0'];
 console.log(getIPs());
-host= 'localhost';
+//host= 'localhost';
 
 http.createServer( function (request, response) {
 	let fields = {};
