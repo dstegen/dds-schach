@@ -32,6 +32,10 @@
   padding: 20px;
   border: 1px solid black;
 }
+.movebutton {
+  margin-left: 10px;
+  font-size: 2rem;
+}
 #moves {
   border: 1px solid lightgrey;
   padding: 10px;
