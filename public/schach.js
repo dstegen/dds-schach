@@ -7,7 +7,6 @@ function setPosition (item) {
   } else {
     $('#oldPosition').val(item);
   }
-  //console.log(item);
 }
 
 var timeout = setTimeout(reloadBoard, 5000);
@@ -31,14 +30,19 @@ $( function() {
   });
   $(".sortable").sortable( "option", "connectWith", ".sortable" );
 } );
+
 let oldP = '';
 let newP = '';
+
 $(".sortable").on("sortstart", function(event, ui) {
   if (event.target.className.split(' ')[0] === currentPlayer) {
     oldP = event.target.id;
     console.log('oldPosition: '+event.target.id);
+  } else {
+    location.reload();
   }
 });
+
 $(".sortable").on("sortreceive", function(event, ui) {
   if (oldP !== '') {
     newP = event.target.id;
@@ -53,6 +57,7 @@ $(".sortable").on("sortreceive", function(event, ui) {
         // you can see the result from the console
         // tab of the developer tools
         console.log(result);
+        location.reload();
       }
     });
     $("control").trigger("reset");
