@@ -22,7 +22,7 @@ console.log(getIPs());
 http.createServer( function (request, response) {
 	let fields = {};
 	if (request.url.includes('action')) {
-		console.log('ACTION');
+		console.log('MOVE');
 		request.url.split('?')[1].split('&').forEach( item => {
 			fields[item.split('=')[0]] = item.split('=')[1];
 		});
@@ -33,6 +33,12 @@ http.createServer( function (request, response) {
 	  response.end('');
 	} else if (request.url.includes('reset')) {
 		obj = model.initModel();
+		response.writeHead(302, {
+	      location: '/' });
+	  response.end('');
+	} else if (request.url.includes('revoke')) {
+		console.log('REVOKE');
+		obj = model.revokeLastMove(obj);
 		response.writeHead(302, {
 	      location: '/' });
 	  response.end('');
