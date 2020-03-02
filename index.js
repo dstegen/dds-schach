@@ -6,7 +6,6 @@ const getIPs = require('./lib/utils-getIPs');
 const router = require('./lib/router');
 const model = require('./lib/model');
 
-let obj = model.initModel();
 
 let port = 8080;
 let host = 'localhost';
@@ -19,7 +18,7 @@ console.log('Available network devices: ');
 console.log(getIPs());
 
 http.createServer( function (request, response) {
-  sendResponse(router(request, obj), response);
+  sendResponse(router(request), response);
 }).listen(port, host, () => console.log('DDS-Schach is online: http://'+host+':'+port));
 
 
