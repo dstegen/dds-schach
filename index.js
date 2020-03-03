@@ -4,8 +4,6 @@ const http = require('http');
 
 const getIPs = require('./lib/utils-getIPs');
 const router = require('./lib/router');
-const model = require('./lib/model');
-
 
 let port = 8080;
 let host = 'localhost';
