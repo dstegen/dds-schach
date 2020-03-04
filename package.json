@@ -1,10 +1,12 @@
 {
   "name": "dds-schach",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "basic online chess server",
   "main": "index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "public": "public",
+    "media": "media"
   },
   "dependencies": {
     "jquery": "^3.4.1",
@@ -20,5 +22,9 @@
     "chess"
   ],
   "author": "daniel stegen, d. stegen, s. stegen",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dstegen/dds-schach.git"
+  }
 }

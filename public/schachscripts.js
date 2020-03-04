@@ -1,4 +1,9 @@
-// DDS-Schach frontend JavaScript
+/*!
+ * public/schachscripts.js
+ * dds-schach (https://github.com/dstegen/dds-schach)
+ * Copyright 2020 Daniel Stegen <info@danielstegen.de>
+ * Licensed under MIT (https://github.com/dstegen/dds-schach/blob/master/LICENSE)
+ */
 
 function setPosition (item) {
   stopReload();

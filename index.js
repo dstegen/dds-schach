@@ -1,4 +1,9 @@
-// index.js
+/*!
+ * index.js
+ * dds-schach (https://github.com/dstegen/dds-schach)
+ * Copyright 2020 Daniel Stegen <info@danielstegen.de>
+ * Licensed under MIT (https://github.com/dstegen/dds-schach/blob/master/LICENSE)
+ */
 
 const http = require('http');
 

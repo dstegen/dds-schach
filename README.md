@@ -1,5 +1,5 @@
 # DDS-Schach #
-#### Einfacher Schach-Server für Kinder ####
+#### Einfacher node.js Schach-Server für Kinder ####
 
 ## License Code ##
 
