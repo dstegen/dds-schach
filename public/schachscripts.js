@@ -14,7 +14,7 @@ function setPosition (item) {
   }
 }
 
-var timeout = setTimeout(reloadBoard, 5000);
+var timeout = ''; // setTimeout(reloadBoard, 5000);
 function reloadBoard () {
   //$("#chessboard").load(location.href + " #chessboard");
   $("#control").trigger("reset");
@@ -50,6 +50,7 @@ $(".sortable").on("sortstart", function(event, ui) {
 
 $(".sortable").on("sortreceive", function(event, ui) {
   if (oldP !== '') {
+    socket.send('move');
     newP = event.target.id;
     console.log('newPosition: '+event.target.id);
     $(':input[type="submit"]').prop('disabled', true);
@@ -62,10 +63,10 @@ $(".sortable").on("sortreceive", function(event, ui) {
         // you can see the result from the console
         // tab of the developer tools
         console.log(result);
-        location.reload();
+        //location.reload();
       }
     });
     $("control").trigger("reset");
-    timeout = setTimeout(reloadBoard, 10);
+    //timeout = setTimeout(reloadBoard, 10);
   }
 });

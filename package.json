@@ -1,6 +1,6 @@
 {
   "name": "dds-schach",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "basic online chess server",
   "main": "index.js",
   "directories": {
@@ -11,7 +11,8 @@
   "dependencies": {
     "jquery": "^3.4.1",
     "jquery-ui-dist": "^1.12.1",
-    "mimetype": "0.0.8"
+    "mimetype": "0.0.8",
+    "ws": "^7.2.1"
   },
   "devDependencies": {},
   "scripts": {
