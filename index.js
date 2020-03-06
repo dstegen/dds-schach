@@ -20,14 +20,14 @@ if (getIPs()['en0']) {
 }
 console.log('Available network devices: ');
 console.log(getIPs());
-
+/*
 const wss = new WebSocket.Server({
 	host: host,
 	port: 8000,
 	clientTracking: true
  });
 
-/*
+
 wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(message) {
     console.log('received: %s', message);
@@ -41,10 +41,14 @@ wss.on('connection', function connection(ws) {
 });
 */
 
-http.createServer( function (request, response) {
+const server = http.createServer( function (request, response) {
   sendResponse(router(request, wss), response);
 }).listen(port, host, () => console.log('DDS-Schach is online: http://'+host+':'+port));
 
+const wss = new WebSocket.Server({
+	server,
+	clientTracking: true
+ });
 
 // Additional function
 
