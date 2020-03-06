@@ -6,27 +6,12 @@
  */
 
 function setPosition (item) {
-  stopReload();
   if ($('#oldPosition').val()) {
     $('#newPosition').val(item);
   } else {
     $('#oldPosition').val(item);
   }
 }
-
-var timeout = ''; // setTimeout(reloadBoard, 5000);
-function reloadBoard () {
-  //$("#chessboard").load(location.href + " #chessboard");
-  $("#control").trigger("reset");
-  location.reload();
-  timeout = setTimeout(reloadBoard, 5000);
-}
-function stopReload () {
-  clearTimeout(timeout)
-  timeout = 0;
-  //console.log('stopped')
-}
-
 
 // jQuery-ui sortable
 $( function() {
@@ -63,10 +48,8 @@ $(".sortable").on("sortreceive", function(event, ui) {
         // you can see the result from the console
         // tab of the developer tools
         console.log(result);
-        //location.reload();
       }
     });
-    $("control").trigger("reset");
-    //timeout = setTimeout(reloadBoard, 10);
+    $("control").trigger("reset");;
   }
 });

@@ -12,43 +12,26 @@ const getIPs = require('./lib/utils-getIPs');
 const router = require('./lib/router');
 
 let port = 8080;
+let wsport = 8080;
 let host = 'localhost';
 if (getIPs()['en0']) {
 	host = getIPs()['en0'];
 } else if (getIPs()['eth0']) {
 	host = getIPs()['eth0'];
+	wsport = 80;
 }
 console.log('Available network devices: ');
 console.log(getIPs());
-/*
-const wss = new WebSocket.Server({
-	host: host,
-	port: 8000,
-	clientTracking: true
- });
-
-
-wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
-		wss.clients.forEach(function each(client) {
-      if (client.readyState === WebSocket.OPEN) {
-				setTimeout(function () {client.send('something')}, 100);
-      }
-    });
-  });
-  //ws.send('something');
-});
-*/
 
 const server = http.createServer( function (request, response) {
-  sendResponse(router(request, wss), response);
-}).listen(port, host, () => console.log('DDS-Schach is online: http://'+host+':'+port));
+  sendResponse(router(request, wss, wsport), response);
+}).listen(port, host, () => console.log('DDS-Schach is online: http://'+host+':'+port+' (wsport:'+wsport+')'));
 
 const wss = new WebSocket.Server({
 	server,
 	clientTracking: true
- });
+});
+
 
 // Additional function
 
