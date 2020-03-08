@@ -5,7 +5,15 @@
  * Licensed under MIT (https://github.com/dstegen/dds-schach/blob/master/LICENSE)
  */
 
-console.log(Cookies.get('dds-player'));
+
+ if (Cookies.get('dds-player') == undefined) {
+   $('.controls').hide();
+ } else if (Cookies.get('dds-player') !== currentPlayer) {
+   $('#control').hide();
+ } else if (Cookies.get('dds-player') === currentPlayer) {
+   $('#control').show();
+ }
+
 
 function setPosition (item) {
   if ($('#oldPosition').val()) {
@@ -14,6 +22,7 @@ function setPosition (item) {
     $('#oldPosition').val(item);
   }
 }
+
 
 // jQuery-ui sortable
 $( function() {
@@ -27,7 +36,7 @@ let oldP = '';
 let newP = '';
 
 $(".sortable").on("sortstart", function(event, ui) {
-  if (event.target.className.split(' ')[0] === currentPlayer) {
+  if (event.target.className.split(' ')[0] === currentPlayer && Cookies.get('dds-player') === currentPlayer) {
     oldP = event.target.id;
     console.log('oldPosition: '+event.target.id);
   } else {
@@ -55,10 +64,3 @@ $(".sortable").on("sortreceive", function(event, ui) {
     $("control").trigger("reset");;
   }
 });
-
-if (Cookies.get('dds-player') !== currentPlayer) {
-  $('#control').hide();
-  //$('.sortable').sortable('option', 'disable', 'true');
-} else {
-  $('#control').show();
-}
