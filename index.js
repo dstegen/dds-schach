@@ -16,6 +16,8 @@ let wsport = 8080;
 let host = 'localhost';
 if (getIPs()['en0']) {
 	host = getIPs()['en0'];
+} else if (getIPs()['wlo1']) {
+	host = getIPs()['wlo1'];
 } else if (getIPs()['eth0']) {
 	host = getIPs()['eth0'];
 	wsport = 80;
