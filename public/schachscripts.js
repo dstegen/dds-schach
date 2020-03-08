@@ -5,6 +5,8 @@
  * Licensed under MIT (https://github.com/dstegen/dds-schach/blob/master/LICENSE)
  */
 
+console.log(Cookies.get('dds-player'));
+
 function setPosition (item) {
   if ($('#oldPosition').val()) {
     $('#newPosition').val(item);
@@ -53,3 +55,10 @@ $(".sortable").on("sortreceive", function(event, ui) {
     $("control").trigger("reset");;
   }
 });
+
+if (Cookies.get('dds-player') !== currentPlayer) {
+  $('#control').hide();
+  //$('.sortable').sortable('option', 'disable', 'true');
+} else {
+  $('#control').show();
+}
