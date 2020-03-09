@@ -9,3 +9,7 @@
 # external modules
 node_modules
 package-lock.json
+
+# sessionId & passwd files
+sessionids.json
+passwd.json
