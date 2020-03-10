@@ -29,5 +29,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dstegen/dds-schach.git"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*.json"
+    ]
   }
 }

@@ -6,11 +6,11 @@
  */
 
 
- if (Cookies.get('dds-player') == undefined) {
+ if (Cookies.get('ddsplayer') == undefined) {
    $('.controls').hide();
- } else if (Cookies.get('dds-player') !== currentPlayer) {
+ } else if (Cookies.get('ddsplayer') !== currentPlayer) {
    $('#control').hide();
- } else if (Cookies.get('dds-player') === currentPlayer) {
+ } else if (Cookies.get('ddsplayer') === currentPlayer) {
    $('#control').show();
  }
 
@@ -36,7 +36,7 @@ let oldP = '';
 let newP = '';
 
 $(".sortable").on("sortstart", function(event, ui) {
-  if (event.target.className.split(' ')[0] === currentPlayer && Cookies.get('dds-player') === currentPlayer) {
+  if (event.target.className.split(' ')[0] === currentPlayer && Cookies.get('ddsplayer') === currentPlayer) {
     oldP = event.target.id;
     console.log('oldPosition: '+event.target.id);
   } else {
