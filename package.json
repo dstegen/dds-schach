@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "formidable": "^1.2.2",
     "jquery": "^3.4.1",
     "jquery-ui-dist": "^1.12.1",
     "mimetype": "0.0.8",
