@@ -46,7 +46,7 @@ $(".sortable").on("sortstart", function(event, ui) {
 
 $(".sortable").on("sortreceive", function(event, ui) {
   if (oldP !== '') {
-    socket.send('move');
+    //socket.send('move');
     newP = event.target.id;
     console.log('newPosition: '+event.target.id);
     $(':input[type="submit"]').prop('disabled', true);
