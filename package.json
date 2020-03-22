@@ -1,6 +1,6 @@
 {
   "name": "dds-schach",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "basic online chess server",
   "main": "index.js",
   "directories": {
