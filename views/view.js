@@ -10,7 +10,7 @@ const {SendObj} = require('webapputils-ds');
 const {getPlayer} = require('../lib/player');
 
 function view (obj, wsport, playerNames) {
-  let version = '0.1.4'
+  let version = '0.2.0'
   let sendObj = new SendObj();
   let chkWeiss = '';
   let chkSchwarz = '';
