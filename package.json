@@ -9,13 +9,8 @@
     "media": "media"
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "formidable": "^1.2.2",
-    "jquery": "^3.4.1",
     "jquery-ui-dist": "^1.12.1",
-    "mimetype": "0.0.8",
-    "uuid": "^7.0.2",
-    "ws": "^7.2.3"
+    "webapputils-ds": "^0.4.4"
   },
   "devDependencies": {},
   "scripts": {

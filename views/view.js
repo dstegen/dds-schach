@@ -1,20 +1,17 @@
 /*!
- * lib/view.js
+ * views/view.js
  * dds-schach (https://github.com/dstegen/dds-schach)
  * Copyright 2020 Daniel Stegen <info@danielstegen.de>
  * Licensed under MIT (https://github.com/dstegen/dds-schach/blob/master/LICENSE)
  */
 
+// Required modules
+const {SendObj} = require('webapputils-ds');
+const {getPlayer} = require('../lib/player');
 
-function view (obj, wsport) {
+function view (obj, wsport, playerNames) {
   let version = '0.1.4'
-  let returnObj = {
-    statusCode: 200,
-    contentType: 'text/html; charset=UTF-8',
-    cookie: [],
-    location: '/',
-    data: ''
-  }
+  let sendObj = new SendObj();
   let chkWeiss = '';
   let chkSchwarz = '';
   let formBg = "white";
@@ -31,60 +28,71 @@ function view (obj, wsport) {
     formFg = "black";
     currentPlayer = "weiss";
   }
-  returnObj.data = `
+  sendObj.data = `
     <!DOCTYPE HTML>
     <html lang="en">
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>DDS-Schach-Server</title>
+        <!-- Bootstrap, jquery and CSS -->
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/public/schach-styles.css">
+        <title>DDS-Schach-Server</title>
       </head>
       <body>
-        <h1>DDS-Schach (${version}): ${obj.players.weiss} vs ${obj.players.schwarz}</h1>
-        <div id="chessboard">
-          <div id="leftside">
-            ${row(obj, 'white', 8)}
-            ${row(obj, 'gray', 7)}
-            ${row(obj, 'white', 6)}
-            ${row(obj, 'gray', 5)}
-            ${row(obj, 'white', 4)}
-            ${row(obj, 'gray', 3)}
-            ${row(obj, 'white', 2)}
-            ${row(obj, 'gray', 1)}
-          </div>
-          <div id="rightside">
-            ${outPieces(obj.schwarz_raus, 'schwarz')}
-            <div>
-              <form id="control" class="controls" action="/action" method="get" style="background-color: ${formBg}; color: ${formFg}">
-                <input type="radio" name="player" value="weiss" ${chkWeiss} /> ${obj.players.weiss} (weiss) <input type="radio" name="player" value="schwarz" ${chkSchwarz} /> ${obj.players.schwarz} (schwarz)
-                <br /><br />
-                <input type="text" id="oldPosition" name="oldPosition" maxlength="2" value="" placeholder="alt" required style="width: 30px;" />
-                <input type="text" id="newPosition" name="newPosition" maxlength="2" value="" placeholder="neu" required style="width: 30px;" />
-                <input type="submit" value="Fertig" class="movebutton" />
-              </form>
-              ${displayMsg(obj.lastMoveOk)}
+        <main class="container py-3">
+          <h1>DDS-Schach (${version}): ${playerNames.weiss} vs ${playerNames.schwarz}</h1>
+          <div id="chessboard">
+            <div id="leftside">
+              ${row(obj, '#F0D9B5', 8)}
+              ${row(obj, '#B58863', 7)}
+              ${row(obj, '#F0D9B5', 6)}
+              ${row(obj, '#B58863', 5)}
+              ${row(obj, '#F0D9B5', 4)}
+              ${row(obj, '#B58863', 3)}
+              ${row(obj, '#F0D9B5', 2)}
+              ${row(obj, '#B58863', 1)}
             </div>
-            ${outPieces(obj.weiss_raus, 'weiss')}
+            <div id="rightside">
+              ${outPieces(obj.schwarz_raus, 'schwarz')}
+              <div>
+                <form id="control" class="controls" action="/action" method="post" style="background-color: ${formBg}; color: ${formFg}">
+                  <input type="radio" name="player" value="weiss" ${chkWeiss} /> ${playerNames.weiss} (weiss) <input type="radio" name="player" value="schwarz" ${chkSchwarz} /> ${playerNames.schwarz} (schwarz)
+                  <br /><br />
+                  <input type="text" id="oldPosition" name="oldPosition" maxlength="2" value="" placeholder="alt" required style="width: 30px;" />
+                  <input type="text" id="newPosition" name="newPosition" maxlength="2" value="" placeholder="neu" required style="width: 30px;" />
+                  <input type="submit" value="Fertig" class="movebutton" />
+                </form>
+                ${displayMsg(obj.lastMoveOk)}
+              </div>
+              ${outPieces(obj.weiss_raus, 'weiss')}
+            </div>
           </div>
-        </div>
-        <div>
-          <div id="moves">
-            <small>Z&uuml;ge:<br />
-              ${obj.moves.map( item => { return item; }).join('<br />')}
-              <br />
-            </small>
+          <div>
+            <div id="moves">
+              <small>Z&uuml;ge:<br />
+                ${obj.moves.map( item => { return item; }).join('<br />')}
+                <br />
+              </small>
+            </div>
+            <form action="/revoke" class="controls" method="get">
+              <input type="submit" value="Letzten Zug löschen" />
+            </form>
+            <br />
+            <form action="/reset" class="controls" method="get">
+              <input type="submit" value="Neu starten" />
+            </form>
+            <br />
+            <form action="/logout" class="controls" method="get">
+              <input type="submit" value="Logout" />
+            </form>
           </div>
-          <form action="/revoke" class="controls" method="get">
-            <input type="submit" value="Letzten Zug löschen" />
-          </form>
-          <br />
-          <form action="/reset" class="controls" method="get">
-            <input type="submit" value="Neu starten" />
-          </form>
-        </div>
+        </main>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="/node_modules/jquery/dist/jquery.min.js"></script>
         <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+        <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+        <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="public/cookie.js"></script>
         <script>
           const currentPlayer = "${currentPlayer}";
@@ -101,7 +109,7 @@ function view (obj, wsport) {
       </body>
     </html>
   `;
-  return returnObj;
+  return sendObj;
 }
 
 
@@ -110,8 +118,8 @@ function view (obj, wsport) {
 function row (obj, bgcolor, localRow) {
   const newObj = sortObj(obj);
   let pieceColor = '';
-  let color = 'black';
-  if (bgcolor === 'gray') color = 'white';
+  let color = '#B58863';
+  if (bgcolor === '#B58863') color = '#F0D9B5';
   let colArray = ['a','b','c','d','e','f','g','h'];
   let returnHTML = '<ul id="row'+localRow+'">';
   for (let i=0; i<8; i++) {
@@ -130,12 +138,12 @@ function row (obj, bgcolor, localRow) {
         </div>
       </li>
     `;
-    if (bgcolor === 'gray') {
-      bgcolor = 'white';
-      color = 'black';
+    if (bgcolor === '#B58863') {
+      bgcolor = '#F0D9B5';
+      color = '#B58863';
     } else  {
-      bgcolor = 'gray';
-      color = 'white';
+      bgcolor = '#B58863';
+      color = '#F0D9B5';
     }
   }
   returnHTML += '</ul>';
@@ -145,7 +153,7 @@ function row (obj, bgcolor, localRow) {
 function outPieces (itemsArray, path) {
   let returnHTML = '';
   if (itemsArray.length > 0) {
-    returnHTML += `<ul>`;
+    returnHTML += `<ul class="border">`;
     itemsArray.forEach( item => {
       returnHTML += `
         <li>

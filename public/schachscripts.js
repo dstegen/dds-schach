@@ -6,7 +6,7 @@
  */
 
 
- if (Cookies.get('ddsplayer') == undefined) {
+ if (Cookies.get('ddsplayer') == undefined || Cookies.get('ddsplayer') == '') {
    $('.controls').hide();
  } else if (Cookies.get('ddsplayer') !== currentPlayer) {
    $('#control').hide();
@@ -52,7 +52,7 @@ $(".sortable").on("sortreceive", function(event, ui) {
     $(':input[type="submit"]').prop('disabled', true);
     $.ajax({
       url: '/action', // url where to submit the request
-      type : "GET", // type of action POST || GET
+      type : "POST", // type of action POST || GET
       dataType : 'json', // data type
       data : {"player": currentPlayer, "oldPosition": oldP, "newPosition": newP}, // post data || get data
         success : function(result) {
