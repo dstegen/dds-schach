@@ -25,8 +25,8 @@ function viewLogin () {
       <div class="container p-5">
         <h1>DDS-Schach Login</h1>
         <form id="login" action="/login" method="post">
-          <input type="text" id="username" name="username" placeholder="Name" value="" required/>
-          <input type="password" id="password" name="password" placeholder="Passwort" value="" required/>
+          <input type="text" class="mb-3" id="username" name="username" placeholder="Name" value="" required/>
+          <input type="password" class="mb-3" id="password" name="password" placeholder="Passwort" value="" required/>
           <input type="submit" class="btn-sm btn-primary" value="Einloggen" />
         </from>
       </div>

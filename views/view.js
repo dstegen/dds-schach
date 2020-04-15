@@ -40,8 +40,8 @@ function view (obj, wsport, playerNames) {
         <title>DDS-Schach-Server</title>
       </head>
       <body>
-        <main class="container py-3">
-          <h1>DDS-Schach (${version}): ${playerNames.weiss} vs ${playerNames.schwarz}</h1>
+        <main class="container py-3 px-0">
+          <h1>DDS-Schach (${version}): <br class="d-block d-lg-none" />${playerNames.weiss} vs ${playerNames.schwarz}</h1>
           <div id="chessboard">
             <div id="leftside">
               ${row(obj, '#F0D9B5', 8)}
@@ -61,7 +61,7 @@ function view (obj, wsport, playerNames) {
                   <br /><br />
                   <input type="text" id="oldPosition" name="oldPosition" maxlength="4" value="" placeholder="alt" required style="width: 3rem;" />
                   <input type="text" id="newPosition" name="newPosition" maxlength="4" value="" placeholder="neu" required style="width: 3rem;" />
-                  <input type="submit" value="Fertig" class="movebutton" />
+                  <input type="submit" value="Fertig" class="movebutton btn-lg btn-primary" />
                 </form>
                 ${displayMsg(obj.lastMoveOk)}
               </div>
@@ -76,15 +76,15 @@ function view (obj, wsport, playerNames) {
               </small>
             </div>
             <form action="/revoke" class="controls" method="get">
-              <input type="submit" value="Letzten Zug löschen" />
+              <input type="submit" class="btn-secondary" value="Letzten Zug löschen" />
             </form>
             <br />
             <form action="/reset" class="controls" method="get">
-              <input type="submit" value="Neu starten" />
+              <input type="submit" class="btn-danger" value="Neu starten" />
             </form>
             <br />
             <form action="/logout" class="controls" method="get">
-              <input type="submit" value="Logout" />
+              <input type="submit" class="btn-secondary" value="Logout" />
             </form>
           </div>
         </main>
@@ -126,14 +126,14 @@ function row (obj, bgcolor, localRow) {
     let img = ``;
     if (newObj[colArray[i]+localRow] != undefined) {
       pieceColor = newObj[colArray[i]+localRow][1];
-      img = `<img id="${colArray[i]}${localRow}_img" src="media/${pieceColor}/${newObj[colArray[i]+localRow][0][0]}.png" width="50" height="50" />`;
+      img = `<img id="${colArray[i]}${localRow}_img" class="img-fluid" src="media/${pieceColor}/${newObj[colArray[i]+localRow][0][0]}.png" />`;
     } else {
       pieceColor = '';
     }
     returnHTML += `
       <li style="background-color: ${bgcolor};">
-        <small style="color: ${color}; margin: 5px;">${colArray[i]}${localRow}</small>
-        <div id="${colArray[i]}${localRow}" align="center" class="${pieceColor} sortable" onclick="setPosition('${colArray[i]}${localRow}')" style="width: 80px; height: 50px;">
+        <small style="color: ${color};">${colArray[i]}${localRow}</small>
+        <div id="${colArray[i]}${localRow}" align="center" class="${pieceColor} sortable" onclick="setPosition('${colArray[i]}${localRow}')">
           ${img}
         </div>
       </li>
@@ -157,8 +157,8 @@ function outPieces (itemsArray, path) {
     itemsArray.forEach( item => {
       returnHTML += `
         <li>
-          <div align="center" style="padding-top: 15px;">
-            <img src="media/${path}/${item[0]}.png" width="50" height="50"" />
+          <div align="center">
+            <img class="img-fluid" src="media/${path}/${item[0]}.png" />
           </div>
         </li>
       `;
@@ -184,7 +184,7 @@ function sortObj (obj) {
 function displayMsg (lastMoveOk) {
   if (!lastMoveOk) {
     return `
-      <div id="msg" style="border: 1px solid red; font-weight: bold; padding: 10px; margin-top: 20px; color: red; height: 16px;">
+      <div id="msg" class="border border-danger p-2 mt-3 font-weight-bold text-danger" style="height: 2.5rem">
         Falscher Zug! Nochmal!
       </div>
     `;

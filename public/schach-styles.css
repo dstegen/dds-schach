@@ -5,11 +5,33 @@
  * Licensed under MIT (https://github.com/dstegen/dds-schach/blob/master/LICENSE)
  */
 
+:root {
+  --chess-square: 4rem;
+}
+
+@media (max-width: 765px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --chess-square: 3rem;
+  }
+  body {
+    font-size: .6rem;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+}
+
 #chessboard {
   display: block;
   margin-bottom: 20px;
 }
-@media only screen and (min-width: 992px) {
+@media (min-width: 992px) {
   #chessboard {
     display: flex;
     flex-direction: row;
@@ -20,7 +42,7 @@
     padding: 0 20px;
   }
   #rightside div {
-    height: 452px;
+    height: 23.75rem;
   }
 }
 
@@ -33,7 +55,7 @@
 }
 #rightside div {
   padding: 20px 0;
-  max-width: 656px;
+  max-width: 32rem;
 }
 #control {
   padding: 20px;
@@ -41,19 +63,27 @@
 }
 .movebutton {
   margin-left: 10px;
-  font-size: 2rem;
+  /*font-size: 2rem;*/
 }
+/*
+@media (max-width: 992px) {
+  .movebutton {
+    font-size: 1rem;
+  }
+}
+*/
 #moves {
   border: 1px solid lightgrey;
   padding: 10px;
   width: 100px;
   margin-bottom: 20px;
 }
+
 ul {
   display: flex;
   flex-direction: row;
   list-style: none;
-  max-width: 656px;
+  max-width: 32rem;
   margin: 0;
   padding: 0;
 }
@@ -62,6 +92,18 @@ li {
   list-style: none;
   margin: 0;
   padding: 0;
-  width: 80px; height: 80px;
-  /*border: 1px solid black;*/
+  width: var(--chess-square);
+  height: var(--chess-square);
+}
+
+li small {
+  margin-left: .5rem;
+  font-size: calc(var(--chess-square)*0.167);
+}
+
+li div {
+  width: var(--chess-square);
+  height: var(--chess-square);
+  margin-top: calc(var(--chess-square)*0.35*-1);
+  padding: .5rem;
 }
