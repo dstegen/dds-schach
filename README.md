@@ -1,11 +1,29 @@
 # DDS-Schach #
-#### Einfacher node.js Schach-Server für Kinder ####
+#### Basic chess server for kids written in nodejs####
+
+## Installation ##
+
+- download the repository
+- do a npm install to install the dependencies
+- start the server with 'npm start'
+
+## Usage ##
+
+#### Demo accounts ####
+If you start using dds-schach and haven't setup your own password file (passwd.json) use one of the following account to login:
+- Dani : 123
+- Sam : 123
+- Dave : 123
+
+## ToDo ##
+- rules to recognize 'check', 'checkmate', 'draw' etc.
+- special rules for 'castling', 'en passant', 'promotion' etc.
 
 ## License Code ##
 
 The MIT License (MIT)
 
-Copyright (c) 2020 Daniel Stegen, David Stegen, Samuel Stegen
+Copyright (c) 2020 Daniel Stegen, D. Stegen, S. Stegen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

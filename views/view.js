@@ -59,8 +59,8 @@ function view (obj, wsport, playerNames) {
                 <form id="control" class="controls" action="/action" method="post" style="background-color: ${formBg}; color: ${formFg}">
                   <input type="radio" name="player" value="weiss" ${chkWeiss} /> ${playerNames.weiss} (weiss) <input type="radio" name="player" value="schwarz" ${chkSchwarz} /> ${playerNames.schwarz} (schwarz)
                   <br /><br />
-                  <input type="text" id="oldPosition" name="oldPosition" maxlength="2" value="" placeholder="alt" required style="width: 30px;" />
-                  <input type="text" id="newPosition" name="newPosition" maxlength="2" value="" placeholder="neu" required style="width: 30px;" />
+                  <input type="text" id="oldPosition" name="oldPosition" maxlength="4" value="" placeholder="alt" required style="width: 3rem;" />
+                  <input type="text" id="newPosition" name="newPosition" maxlength="4" value="" placeholder="neu" required style="width: 3rem;" />
                   <input type="submit" value="Fertig" class="movebutton" />
                 </form>
                 ${displayMsg(obj.lastMoveOk)}
