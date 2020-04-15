@@ -7,7 +7,7 @@
 
 // Required modules
 const {SendObj} = require('webapputils-ds');
-const {getPlayer} = require('../lib/player');
+
 
 function view (obj, wsport, playerNames) {
   let version = '0.2.0'

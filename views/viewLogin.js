@@ -8,7 +8,7 @@
 // Required Modules
 const {SendObj} = require('webapputils-ds');
 
-function viewLogin (obj) {
+function viewLogin () {
   let sendObj = new SendObj();
   sendObj.data = `
   <!DOCTYPE HTML>
