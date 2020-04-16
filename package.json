@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "jquery-ui-dist": "^1.12.1",
-    "webapputils-ds": "^0.4.4"
+    "webapputils-ds": "^0.4.5"
   },
   "devDependencies": {},
   "scripts": {
