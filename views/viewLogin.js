@@ -18,7 +18,7 @@ function viewLogin () {
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!-- Bootstrap, jquery and CSS -->
       <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/public/styles.css">
+      <link rel="stylesheet" href="/public/schach-styles.css">
       <title>DDS-Schach Login</title>
     </head>
     <body>
@@ -32,9 +32,9 @@ function viewLogin () {
       </div>
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-      <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+      <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
       <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-      <script src="/public/scripts.js"></script>
+      <script src="public/cookie.js"></script>
     </body>
   </html>
   `;
