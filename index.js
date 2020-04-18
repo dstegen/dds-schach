@@ -8,9 +8,20 @@
  'use strict';
 
  // Required modules
+const {ServerDS} = require('webapputils-ds');
+const router = require('./lib/router');
+
+// Name the process
+process.title = 'DDS-Schach';
+
+const server = new ServerDS('DDS-Schach');
+server.setCallback(router);
+server.startServer();
+
+
+/*
 const http = require('http');
 const WebSocket = require('ws');
-
 const {getIPs} = require('webapputils-ds');
 const router = require('./lib/router');
 
@@ -36,3 +47,4 @@ const wss = new WebSocket.Server({
 	server,
 	clientTracking: true
 });
+*/
