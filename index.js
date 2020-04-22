@@ -14,6 +14,16 @@ const router = require('./lib/router');
 // Name the process
 process.title = 'DDS-Schach';
 
-const server = new ServerDS('DDS-Schach');
+let port = 8080;
+
+try {
+	if (process.argv[2] && process.argv[2].includes('port')) {
+		port = Number(process.argv[2].split('=')[1]);
+	}
+} catch (e) {
+	console.log('ERROR reading port number from command line: '+e);
+}
+
+const server = new ServerDS('DDS-Schach', port);
 server.setCallback(router);
 server.startServer();
