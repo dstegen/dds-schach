@@ -1,5 +1,5 @@
 # DDS-Schach #
-#### Basic chess server for kids written in nodejs####
+#### Basic chess server for kids written in nodejs ####
 
 ## Installation ##
 
